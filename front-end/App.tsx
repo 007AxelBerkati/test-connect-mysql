@@ -12,18 +12,14 @@ function App(): JSX.Element {
   const [data, setdata] = useState([]);
 
   const getData = async () => {
-    const response = await fetch('http://localhost:8080/users/users').then(
-      res => res.json(),
-    );
-
-    setdata(response);
+    await fetch('http://192.168.1.8:8080/users/users')
+      .then(response => response.json())
+      .then(data => console.log(data));
   };
 
   useEffect(() => {
     getData();
   }, []);
-
-  console.log(data);
 
   return (
     <SafeAreaView style={{flex: 1}}>
